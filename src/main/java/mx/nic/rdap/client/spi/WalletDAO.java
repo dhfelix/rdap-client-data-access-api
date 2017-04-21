@@ -1,14 +1,21 @@
 package mx.nic.rdap.client.spi;
 
-import mx.nic.rdap.client.credential.RDAPLogin;
+import java.util.List;
+
+import mx.nic.rdap.client.credential.UserEncryptedCredential;
 import mx.nic.rdap.client.dao.exception.DataAccessException;
 
 public interface WalletDAO {
 
-	public RDAPLogin getLogin(long userId, String serverDomain) throws DataAccessException;
+	public List<UserEncryptedCredential> getUserCredentialForRdapServer(long userId, String serverId)
+			throws DataAccessException;
 
-	public long storeLogin(RDAPLogin userServerCredential) throws DataAccessException;
+	public List<UserEncryptedCredential> getUserCredentials(long userId) throws DataAccessException;
 
-	public void updateLogin(RDAPLogin userServerCredential) throws DataAccessException;
+	public long storeUserCredential(UserEncryptedCredential userServerCredential) throws DataAccessException;
+
+	public int updateUserCredential(UserEncryptedCredential userServerCredential) throws DataAccessException;
+
+	public void deleteUserCredential(long userId, long loginId) throws DataAccessException;
 
 }

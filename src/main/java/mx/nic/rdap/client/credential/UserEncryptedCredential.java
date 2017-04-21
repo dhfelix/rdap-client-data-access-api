@@ -1,12 +1,12 @@
 package mx.nic.rdap.client.credential;
 
-public class RDAPLogin {
+public class UserEncryptedCredential {
 
 	private Long id;
-	private Long userId;
+	private Long clientUserId;
 	private String username;
 	private String encryptedPassword;
-	private String rdapServerDomain;
+	private String rdapServerId;
 
 	public Long getId() {
 		return id;
@@ -16,12 +16,12 @@ public class RDAPLogin {
 		this.id = id;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getClientUserId() {
+		return clientUserId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setClientUserId(Long clientUserId) {
+		this.clientUserId = clientUserId;
 	}
 
 	public String getUsername() {
@@ -40,12 +40,11 @@ public class RDAPLogin {
 		this.encryptedPassword = encryptedPassword;
 	}
 
-	public String getRdapServerDomain() {
-		return rdapServerDomain;
+	public String getRdapServerId() {
+		return rdapServerId;
 	}
 
-	public void setRdapServerDomain(String rdapServerDomain) {
-		this.rdapServerDomain = rdapServerDomain;
+	public void setRdapServerId(String rdapServerId) {
+		this.rdapServerId = rdapServerId;
 	}
-
 }
