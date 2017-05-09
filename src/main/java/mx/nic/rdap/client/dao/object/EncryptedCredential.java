@@ -1,9 +1,9 @@
-package mx.nic.rdap.client.credential;
+package mx.nic.rdap.client.dao.object;
 
-public class UserEncryptedCredential {
+public class EncryptedCredential {
 
 	private Long id;
-	private Long clientUserId;
+	private Long userId;
 	private String username;
 	private String encryptedPassword;
 	private String rdapServerId;
@@ -16,12 +16,12 @@ public class UserEncryptedCredential {
 		this.id = id;
 	}
 
-	public Long getClientUserId() {
-		return clientUserId;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setClientUserId(Long clientUserId) {
-		this.clientUserId = clientUserId;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getUsername() {

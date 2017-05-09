@@ -1,20 +1,20 @@
 package mx.nic.rdap.client.spi;
 
-import mx.nic.rdap.client.credential.RdapClientUser;
-import mx.nic.rdap.client.credential.UserEncryptedWalletKey;
 import mx.nic.rdap.client.dao.exception.DataAccessException;
+import mx.nic.rdap.client.dao.object.RdapClientUser;
+import mx.nic.rdap.client.dao.object.EncryptedWalletKey;
 
 public interface UserDAO {
 
-	public RdapClientUser getUserCredential(String username) throws DataAccessException;
+	public RdapClientUser getUser(String username) throws DataAccessException;
 
-	public long storeUserCredential(RdapClientUser userCredential) throws DataAccessException;
+	public long storeUser(RdapClientUser user) throws DataAccessException;
 
-	public void updateUserCredential(RdapClientUser userCredential) throws DataAccessException;
+	public void updateUser(RdapClientUser user) throws DataAccessException;
 
-	public UserEncryptedWalletKey getUserWalletKey(long userId) throws DataAccessException;
+	public EncryptedWalletKey getWalletKey(long userId) throws DataAccessException;
 
-	public void storeUserWalletKey(UserEncryptedWalletKey userWalletKey) throws DataAccessException;
+	public void storeWalletKey(EncryptedWalletKey encryptedWalletKey) throws DataAccessException;
 
-	public void updateUserWalletKey(UserEncryptedWalletKey userWalletKey) throws DataAccessException;
+	public void updateWalletKey(EncryptedWalletKey encryptedWalletKey) throws DataAccessException;
 }

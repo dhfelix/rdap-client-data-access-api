@@ -9,7 +9,6 @@ import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
 
 public class WalletKey {
 
@@ -18,25 +17,26 @@ public class WalletKey {
 
 	private SecretKey userKey;
 
-	public WalletKey(String encriptedKey, SecretKey passwordBaseKey) throws NoSuchAlgorithmException,
-			NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeyException {
+	public WalletKey(String encriptedKey, SecretKey passwordBaseKey)
+			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
 		Cipher cipher = Cipher.getInstance(cipherAlgorithm);
 
-		cipher.init(Cipher.DECRYPT_MODE, passwordBaseKey);
-		byte[] decryptKey = cipher.doFinal(Base64.getDecoder().decode(encriptedKey));
-		userKey = new SecretKeySpec(decryptKey, cipherAlgorithm);
+		cipher.init(Cipher.UNWRAP_MODE, passwordBaseKey);
+		byte[] wrappedKey = Base64.getDecoder().decode(encriptedKey);
+		userKey = (SecretKey) cipher.unwrap(wrappedKey, cipherAlgorithm, Cipher.SECRET_KEY);
+
 	}
 
-	public String decryptUserCredentialPassword(String encryptedPass) throws InvalidKeyException, IllegalBlockSizeException,
-			BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
+	public String decryptUserCredentialPassword(String encryptedPass) throws InvalidKeyException,
+			IllegalBlockSizeException, BadPaddingException, NoSuchAlgorithmException, NoSuchPaddingException {
 		Cipher cipher = Cipher.getInstance(cipherAlgorithm);
 		cipher.init(Cipher.DECRYPT_MODE, userKey);
 		byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(encryptedPass));
 		return new String(decryptedBytes);
 	}
 
-	public String encryptUserCredentialPassword(String plainPass) throws NoSuchAlgorithmException, NoSuchPaddingException,
-			InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+	public String encryptUserCredentialPassword(String plainPass) throws NoSuchAlgorithmException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
 		Cipher cipher = Cipher.getInstance(cipherAlgorithm);
 
 		cipher.init(Cipher.ENCRYPT_MODE, userKey);
@@ -44,13 +44,13 @@ public class WalletKey {
 		return Base64.getEncoder().encodeToString(doFinal);
 	}
 
-	public String getEncryptedWalletKey(SecretKey passwordBaseKey) throws NoSuchAlgorithmException,
-			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+	public String getEncryptedWalletKey(SecretKey passwordBaseKey)
+			throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException {
 		Cipher cipher = Cipher.getInstance(cipherAlgorithm);
-		cipher.init(Cipher.ENCRYPT_MODE, passwordBaseKey);
+		cipher.init(Cipher.WRAP_MODE, passwordBaseKey);
+		byte[] wrap = cipher.wrap(userKey);
 
-		byte[] encryptedBytes = cipher.doFinal(userKey.getEncoded());
-		return Base64.getEncoder().encodeToString(encryptedBytes);
+		return Base64.getEncoder().encodeToString(wrap);
 	}
 
 }

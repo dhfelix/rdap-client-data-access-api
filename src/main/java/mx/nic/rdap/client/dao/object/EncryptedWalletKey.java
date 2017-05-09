@@ -1,6 +1,6 @@
-package mx.nic.rdap.client.credential;
+package mx.nic.rdap.client.dao.object;
 
-public class UserEncryptedWalletKey {
+public class EncryptedWalletKey {
 
 	private Long userId;
 

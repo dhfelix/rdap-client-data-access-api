@@ -1,4 +1,4 @@
-package mx.nic.rdap.client.credential;
+package mx.nic.rdap.client.dao.object;
 
 public class RdapClientUser {
 
@@ -13,6 +13,12 @@ public class RdapClientUser {
 	private int iterations;
 
 	private String hashAlgorithm;
+
+	private String keyAlgorithm;
+
+	private int keySize;
+
+	private String pbeAlgorith;
 
 	public RdapClientUser() {
 		// no code;
@@ -66,6 +72,30 @@ public class RdapClientUser {
 
 	public void setHashAlgorithm(String hashAlgorithm) {
 		this.hashAlgorithm = hashAlgorithm;
+	}
+
+	public String getKeyAlgorithm() {
+		return keyAlgorithm;
+	}
+
+	public void setKeyAlgorithm(String keyAlgorithm) {
+		this.keyAlgorithm = keyAlgorithm;
+	}
+
+	public int getKeySize() {
+		return keySize;
+	}
+
+	public void setKeySize(int keySize) {
+		this.keySize = keySize;
+	}
+
+	public String getPbeAlgorith() {
+		return pbeAlgorith;
+	}
+
+	public void setPbeAlgorith(String pbeAlgorith) {
+		this.pbeAlgorith = pbeAlgorith;
 	}
 
 }
