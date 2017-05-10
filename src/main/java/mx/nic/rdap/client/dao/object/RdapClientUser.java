@@ -10,15 +10,15 @@ public class RdapClientUser {
 
 	private String salt;
 
-	private int iterations;
+	private Integer iterations;
 
 	private String hashAlgorithm;
 
 	private String keyAlgorithm;
 
-	private int keySize;
+	private Integer keySize;
 
-	private String pbeAlgorith;
+	private String pbeAlgorithm;
 
 	public RdapClientUser() {
 		// no code;
@@ -58,11 +58,11 @@ public class RdapClientUser {
 		this.salt = salt;
 	}
 
-	public int getIterations() {
+	public Integer getIterations() {
 		return iterations;
 	}
 
-	public void setIterations(int iterations) {
+	public void setIterations(Integer iterations) {
 		this.iterations = iterations;
 	}
 
@@ -82,20 +82,20 @@ public class RdapClientUser {
 		this.keyAlgorithm = keyAlgorithm;
 	}
 
-	public int getKeySize() {
+	public Integer getKeySize() {
 		return keySize;
 	}
 
-	public void setKeySize(int keySize) {
+	public void setKeySize(Integer keySize) {
 		this.keySize = keySize;
 	}
 
-	public String getPbeAlgorith() {
-		return pbeAlgorith;
+	public String getPbeAlgorithm() {
+		return pbeAlgorithm;
 	}
 
-	public void setPbeAlgorith(String pbeAlgorith) {
-		this.pbeAlgorith = pbeAlgorith;
+	public void setPbeAlgorith(String pbeAlgorithm) {
+		this.pbeAlgorithm = pbeAlgorithm;
 	}
 
 }
