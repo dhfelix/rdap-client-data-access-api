@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import mx.nic.rdap.client.dao.exception.DataAccessException;
 import mx.nic.rdap.client.dao.exception.InitializationException;
+import mx.nic.rdap.client.service.DataAccessService;
 
 /**
  * The interface of the main/central class of the implementation.
@@ -26,23 +27,21 @@ public interface DataAccessImplementation {
 	public void init(Properties properties) throws InitializationException;
 
 	/**
-	 * Returns an instance of the implementation class that retrieves Autonomous
-	 * System Number data from whatever source the implementation is wrapping.
-	 * <p>
-	 * Not all implementations are expected to provide ASN data. In such cases,
-	 * this function is expected to either return <code>null</code> or throw a
-	 * {@link NotImplementedException}.
+	 * Returns an instance of the implementation class that retrieves User data
+	 * from whatever source the implementation is wrapping.
 	 */
 	public UserDAO getUserDAO() throws DataAccessException;
 
 	/**
-	 * Returns an instance of the implementation class that retrieves Autonomous
-	 * System Number data from whatever source the implementation is wrapping.
-	 * <p>
-	 * Not all implementations are expected to provide ASN data. In such cases,
-	 * this function is expected to either return <code>null</code> or throw a
-	 * {@link NotImplementedException}.
+	 * Returns an instance of the implementation class that retrieves Credential
+	 * data from whatever source the implementation is wrapping.
 	 */
-	public WalletDAO getWalletDAO() throws DataAccessException;
+	public CredentialDAO getCredentialDAO() throws DataAccessException;
+
+	/**
+	 * Returns an instance of the implementation class that retrieves Wallet Key
+	 * data from whatever source the implementation is wrapping.
+	 */
+	public WalletKeyDAO getWalletKeyDAO() throws DataAccessException;
 
 }

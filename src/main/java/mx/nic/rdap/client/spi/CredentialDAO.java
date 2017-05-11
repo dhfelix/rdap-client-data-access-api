@@ -5,7 +5,7 @@ import java.util.List;
 import mx.nic.rdap.client.dao.exception.DataAccessException;
 import mx.nic.rdap.client.dao.object.EncryptedCredential;
 
-public interface WalletDAO {
+public interface CredentialDAO {
 
 	public List<EncryptedCredential> getCredentialsForRdapServer(long userId, String serverId)
 			throws DataAccessException;

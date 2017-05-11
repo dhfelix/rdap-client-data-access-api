@@ -1,7 +1,6 @@
 package mx.nic.rdap.client.spi;
 
 import mx.nic.rdap.client.dao.exception.DataAccessException;
-import mx.nic.rdap.client.dao.object.EncryptedWalletKey;
 import mx.nic.rdap.client.dao.object.RdapClientUser;
 
 public interface UserDAO {
@@ -14,9 +13,4 @@ public interface UserDAO {
 
 	public boolean existUser(String username) throws DataAccessException;
 
-	public EncryptedWalletKey getWalletKey(long userId) throws DataAccessException;
-
-	public long storeWalletKey(EncryptedWalletKey encryptedWalletKey) throws DataAccessException;
-
-	public void updateWalletKey(EncryptedWalletKey encryptedWalletKey) throws DataAccessException;
 }
