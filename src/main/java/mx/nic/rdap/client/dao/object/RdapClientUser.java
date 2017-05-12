@@ -39,6 +39,13 @@ public class RdapClientUser {
 	}
 
 	@Override
+	public String toString() {
+		return "RdapClientUser [id=" + id + ", username=" + username + ", hashedPassword=" + hashedPassword + ", salt="
+				+ salt + ", iterations=" + iterations + ", hashAlgorithm=" + hashAlgorithm + ", keyAlgorithm="
+				+ keyAlgorithm + ", keySize=" + keySize + ", pbeAlgorithm=" + pbeAlgorithm + "]";
+	}
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
