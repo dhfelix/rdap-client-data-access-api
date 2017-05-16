@@ -154,7 +154,7 @@ public class DataAccessService {
 		return implementation;
 	}
 
-	public static CredentialDAO getWalletDAO() throws DataAccessException {
+	public static CredentialDAO getCredentialDAO() throws DataAccessException {
 		return getImplementation().getCredentialDAO();
 	}
 
