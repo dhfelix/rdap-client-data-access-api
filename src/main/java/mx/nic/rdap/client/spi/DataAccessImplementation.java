@@ -4,6 +4,8 @@ import java.util.Properties;
 
 import mx.nic.rdap.client.dao.exception.DataAccessException;
 import mx.nic.rdap.client.dao.exception.InitializationException;
+import mx.nic.rdap.client.dao.object.EncryptedCredential;
+import mx.nic.rdap.client.dao.object.WalletUser;
 import mx.nic.rdap.client.service.DataAccessService;
 
 /**
@@ -27,21 +29,16 @@ public interface DataAccessImplementation {
 	public void init(Properties properties) throws InitializationException;
 
 	/**
-	 * Returns an instance of the implementation class that retrieves User data
-	 * from whatever source the implementation is wrapping.
-	 */
-	public UserDAO getUserDAO() throws DataAccessException;
-
-	/**
-	 * Returns an instance of the implementation class that retrieves Credential
-	 * data from whatever source the implementation is wrapping.
+	 * Returns an instance of the implementation class that retrieves
+	 * {@link EncryptedCredential} data from whatever source the implementation
+	 * is wrapping.
 	 */
 	public CredentialDAO getCredentialDAO() throws DataAccessException;
 
 	/**
-	 * Returns an instance of the implementation class that retrieves Wallet Key
-	 * data from whatever source the implementation is wrapping.
+	 * Returns an instance of the implementation class that retrieves
+	 * {@link WalletUser} data from whatever source the implementation is
+	 * wrapping.
 	 */
-	public WalletKeyDAO getWalletKeyDAO() throws DataAccessException;
-
+	public WalletUserDAO getWalletUserDAO() throws DataAccessException;
 }

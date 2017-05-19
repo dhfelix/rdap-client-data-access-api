@@ -10,8 +10,7 @@ import mx.nic.rdap.client.dao.exception.DataAccessException;
 import mx.nic.rdap.client.dao.exception.InitializationException;
 import mx.nic.rdap.client.spi.CredentialDAO;
 import mx.nic.rdap.client.spi.DataAccessImplementation;
-import mx.nic.rdap.client.spi.UserDAO;
-import mx.nic.rdap.client.spi.WalletKeyDAO;
+import mx.nic.rdap.client.spi.WalletUserDAO;
 
 /**
  * This is the class that loads the global {@link DataAccessImplementation} the
@@ -158,12 +157,7 @@ public class DataAccessService {
 		return getImplementation().getCredentialDAO();
 	}
 
-	public static UserDAO getUserDAO() throws DataAccessException {
-		return getImplementation().getUserDAO();
+	public static WalletUserDAO getWalletUserDAO() throws DataAccessException {
+		return getImplementation().getWalletUserDAO();
 	}
-
-	public static WalletKeyDAO getWalletKeyDAO() throws DataAccessException {
-		return getImplementation().getWalletKeyDAO();
-	}
-
 }
